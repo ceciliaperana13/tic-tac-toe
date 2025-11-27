@@ -108,22 +108,22 @@ while running:
                     # condition nouvelle partie
                     if btn.action == "new":
                         print("Nouvelle partie")
-                        pygame.quit()
-                        subprocess.run(["python", "new_game.py"])
-                        sys.exit()
+                          
 
                     # condition options
                     elif btn.action == "options":
-                        # TODO : ici on va supprimer tout les elements créée et utilisé pour le menu 
-                        print("Options")
-                        screen.fill("white")
+                     current_page = "options"
+                     screen.fill("white")
+                     print("Page Options")
 
                     # condition quitter
-                    elif btn.action == "quit":
+                    else:
+                        btn.action == "quit"
                         running = False
 
-    # on lance le jeu
+    
     pygame.display.flip()
 
 # on arrête le jeu
 pygame.quit()
+sys.exit()

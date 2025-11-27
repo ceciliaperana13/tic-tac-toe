@@ -1,6 +1,8 @@
 import pygame
 import sys
 import subprocess
+from options import run_options   # <--- import de la fonction
+
 
 pygame.init()
 pygame.mixer.init()
@@ -112,9 +114,9 @@ while running:
 
                     # condition options
                     elif btn.action == "options":
-                     current_page = "options"
-                     screen.fill("white")
-                     print("Page Options")
+                        print("ouverture de options.py...")
+                        run_options(screen,clock,font_title)
+                     
 
                     # condition quitter
                     else:

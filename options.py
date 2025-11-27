@@ -1,10 +1,33 @@
+# options.py
 import pygame
-import sys
-import subprocess
 
-pygame.init()
-pygame.mixer.init()
-# fenetre
-width, height = 800, 450
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("tic-tac")
+white = (255, 255, 255)
+gray = (40, 40, 40)
+
+def run_options(screen, clock, font_title):
+    running = True
+    width, height = screen.get_size()
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                # on ferme complètement le jeu
+                pygame.quit()
+                raise SystemExit
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    # on quitte l'écran d'options et on revient au menu
+                    running = False
+
+        screen.fill(gray)
+        txt = font_title.render("OPTIONS", True, white)
+        rect = txt.get_rect(center=(width // 2, height // 2 - 40))
+        screen.blit(txt, rect)
+
+        info = font_title.render("ESC pour retour", True, white)
+        info_rect = info.get_rect(center=(width // 2, height // 2 + 40))
+        screen.blit(info, info_rect)
+
+        pygame.display.flip()
+        clock.tick(60)

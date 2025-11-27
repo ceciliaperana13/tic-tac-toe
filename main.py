@@ -74,6 +74,7 @@ buttons = [
 running = True
 clock = pygame.time.Clock()
 
+# boucle pour la souris
 while running:
     clock.tick(60)
     screen.blit(background, (0, 0))
@@ -98,26 +99,31 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+        # condition pour les boutons
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             for btn in buttons:
                 if btn.is_clicked(event.pos):
                     pygame.time.delay(150)
-                    
+
+                    # condition nouvelle partie
                     if btn.action == "new":
                         print("Nouvelle partie")
                         pygame.quit()
                         subprocess.run(["python", "new_game.py"])
                         sys.exit()
 
+                    # condition options
                     elif btn.action == "options":
                         # TODO : ici on va supprimer tout les elements créée et utilisé pour le menu 
                         print("Options")
                         screen.fill("white")
 
+                    # condition quitter
                     elif btn.action == "quit":
                         running = False
 
+    # on lance le jeu
     pygame.display.flip()
 
+# on arrête le jeu
 pygame.quit()

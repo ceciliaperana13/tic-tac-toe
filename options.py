@@ -20,7 +20,7 @@ def run_options(screen, clock, font_title):
                     # on quitte l'écran d'options et on revient au menu
                     running = False
 
-        screen.fill(gray)
+        screen.fill(white)
         txt = font_title.render("OPTIONS", True, white)
         rect = txt.get_rect(center=(width // 2, height // 2 - 40))
         screen.blit(txt, rect)
